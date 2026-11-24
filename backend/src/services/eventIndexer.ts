@@ -629,7 +629,6 @@ export async function pollSorobanEventsOnce(
   return { confirmed: confirmedEvents.length, tentative, latestLedger };
 }
 
-
 // ---------------------------------------------------------------------------
 // Scheduler with exponential backoff on RPC failures
 // ---------------------------------------------------------------------------

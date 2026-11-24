@@ -54,10 +54,7 @@ export class IndexerReorgHandler {
    * Evaluates an observed event at the storage boundary.
    * If ledger difference meets confirmation depth, it is committed; otherwise kept pending.
    */
-  evaluateEvent(
-    latestLedger: number,
-    event: TentativeEvent,
-  ): 'pending' | 'committed' {
+  evaluateEvent(latestLedger: number, event: TentativeEvent): 'pending' | 'committed' {
     const confirmations = confirmationsFor(latestLedger, event.ledger);
     const outcome = isConfirmed(latestLedger, event.ledger, this.minConfirmations)
       ? 'committed'

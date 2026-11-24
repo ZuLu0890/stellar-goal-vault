@@ -206,7 +206,10 @@ describe('indexer reorganization handling: tentative events, replay and failure 
     reply = { status: 502, body: 'bad gateway' };
     await expect(indexer.pollSorobanEventsOnce()).rejects.toThrow();
 
-    reply = { status: 200, body: { jsonrpc: '2.0', id: 1, error: { code: -32000, message: 'boom' } } };
+    reply = {
+      status: 200,
+      body: { jsonrpc: '2.0', id: 1, error: { code: -32000, message: 'boom' } },
+    };
     await expect(indexer.pollSorobanEventsOnce()).rejects.toThrow(/malformed RPC response/);
 
     expect(recordedEvents(database)).toHaveLength(0);

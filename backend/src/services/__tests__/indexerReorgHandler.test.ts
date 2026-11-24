@@ -66,9 +66,7 @@ describe('Indexer reorganization boundary handling and observability', () => {
 
     const handler = new IndexerReorgHandler(5);
     expect(handler.evaluateEvent(101, event(100))).toBe('pending');
-    expect(
-      db.prepare(`SELECT COUNT(*) AS n FROM campaign_events`).get(),
-    ).toEqual({ n: 1 });
+    expect(db.prepare(`SELECT COUNT(*) AS n FROM campaign_events`).get()).toEqual({ n: 1 });
   });
 });
 
